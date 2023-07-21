@@ -10,8 +10,9 @@ def register():
 	dev_id = request.form['id']
 	group = request.form['group']
 	color = request.form['color']
+	ip = request.form['ip']
 
-	data = { 'id': dev_id, 'group': group, 'color': color, 'led_on': False, 'push': 0 }
+	data = { 'id': dev_id, 'group': group, 'color': color, 'ip': ip, 'push': 0 }
 	with TinyDB(fn) as db:
 		device = Query()
 		db.upsert(data, device.id == dev_id)
